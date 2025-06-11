@@ -1,0 +1,1010 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Graphic Design Portfolio | Matrix Lab</title>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* CSS from the main page with portfolio-specific additions */
+        
+        :root {
+            --red: #FF2E2E;
+            --red-light: #ff5c5c;
+            --black: #0A0A0A;
+            --black-light: #1a1a1a;
+            --white: #fff;
+            --gray: #cccccc;
+            --glass: rgba(20,20,20,0.85);
+            --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+        
+        /* Portfolio Hero */
+        .portfolio-hero {
+            min-height: 70vh;
+            display: flex;
+            align-items: center;
+            padding: 120px 5% 80px;
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(120deg, #0a0a0a 90%, #FF2E2E11 100%);
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+        
+        .portfolio-hero-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            width: 100%;
+        }
+        
+        .portfolio-hero h1 {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 800;
+            margin-bottom: 20px;
+            background: linear-gradient(90deg, var(--white), var(--red));
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+            -webkit-text-fill-color: transparent;
+            letter-spacing: -1.5px;
+        }
+        
+        .portfolio-hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin-bottom: 30px;
+            color: var(--gray);
+        }
+        
+        /* Portfolio Grid */
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 30px;
+            max-width: 1400px;
+            margin: 60px auto;
+            padding: 0 5%;
+        }
+        
+        .portfolio-item {
+            border-radius: 20px;
+            overflow: hidden;
+            position: relative;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            height: 450px;
+            transition: var(--transition);
+        }
+        
+        .portfolio-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(255, 46, 46, 0.3);
+        }
+        
+        .portfolio-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+        
+        .portfolio-item:hover img {
+            transform: scale(1.05);
+        }
+        
+        .portfolio-info {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(10, 10, 10, 0.9);
+            padding: 25px;
+            transform: translateY(0);
+            transition: transform 0.3s ease;
+        }
+        
+        .portfolio-info h3 {
+            font-size: 1.5rem;
+            color: var(--white);
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+        
+        .portfolio-info p {
+            color: var(--gray);
+            font-size: 0.95rem;
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+        
+        .portfolio-category {
+            display: inline-block;
+            padding: 5px 15px;
+            background: var(--red);
+            color: white;
+            border-radius: 30px;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+         :root {
+            --red: #FF2E2E;
+            --red-light: #ff5c5c;
+            --black: #0A0A0A;
+            --black-light: #1a1a1a;
+            --white: #fff;
+            --gray: #cccccc;
+            --glass: rgba(20,20,20,0.85);
+            --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+        }
+        
+        body {
+            background: var(--black);
+            color: var(--white);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+        
+        /* Navigation - Hamburger Menu Enhanced */
+        .navbar {
+            padding: 18px 7%;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 200;
+            background: rgba(10, 10, 10, 0.85);
+            backdrop-filter: blur(8px);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+            box-shadow: 0 3px 18px 0 rgba(0,0,0,0.15);
+        }
+        
+        .logo {
+            font-size: 26px;
+            font-weight: 800;
+            color: var(--red);
+            letter-spacing: 1px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo span {
+            color: var(--white);
+            font-weight: 600;
+            margin-left: 5px;
+            font-size: 0.9em;
+        }
+        
+        .nav-links {
+            display: flex;
+            align-items: center;
+        }
+        
+        .nav-links a {
+            margin-left: 30px;
+            font-size: 16px;
+            color: var(--white);
+            text-decoration: none;
+            transition: color 0.2s;
+            position: relative;
+            font-weight: 500;
+        }
+        
+        .nav-links a:after {
+            content: '';
+            display: block;
+            width: 0;
+            height: 2px;
+            background: var(--red);
+            transition: 0.3s;
+            position: absolute;
+            bottom: -3px;
+            left: 0;
+        }
+        
+        .nav-links a:hover {
+            color: var(--red);
+        }
+        
+        .nav-links a:hover:after {
+            width: 100%;
+        }
+        
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--white);
+            cursor: pointer;
+            z-index: 300;
+            width: 40px;
+            height: 40px;
+            position: relative;
+        }
+        
+        /* Hamburger Icon - Modern Design */
+        .hamburger {
+            width: 30px;
+            height: 20px;
+            position: relative;
+            transform: rotate(0deg);
+            transition: .5s ease-in-out;
+            cursor: pointer;
+        }
+        
+        .hamburger span {
+            display: block;
+            position: absolute;
+            height: 3px;
+            width: 100%;
+            background: var(--white);
+            border-radius: 3px;
+            opacity: 1;
+            left: 0;
+            transform: rotate(0deg);
+            transition: .25s ease-in-out;
+        }
+        
+        .hamburger span:nth-child(1) {
+            top: 0px;
+        }
+        
+        .hamburger span:nth-child(2) {
+            top: 8px;
+        }
+        
+        .hamburger span:nth-child(3) {
+            top: 16px;
+        }
+        
+        .mobile-menu-btn.active .hamburger span:nth-child(1) {
+            top: 8px;
+            transform: rotate(135deg);
+        }
+        
+        .mobile-menu-btn.active .hamburger span:nth-child(2) {
+            opacity: 0;
+            left: -60px;
+        }
+        
+        .mobile-menu-btn.active .hamburger span:nth-child(3) {
+            top: 8px;
+            transform: rotate(-135deg);
+        }
+        
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            padding: 0 5%;
+            background: linear-gradient(120deg, #0a0a0a 90%, #FF2E2E11 100%);
+        }
+        
+        .bg-anim {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+        }
+        
+        .bg-anim span {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(40px);
+            opacity: 0.2;
+            animation: float 13s linear infinite alternate;
+        }
+        
+        .bg-anim span:nth-child(1) {
+            background: var(--red);
+            width: 500px;
+            height: 500px;
+            top: 10%;
+            left: -200px;
+            animation-delay: 0s;
+        }
+        
+        .bg-anim span:nth-child(2) {
+            background: var(--white);
+            width: 300px;
+            height: 300px;
+            top: 60%;
+            left: 63vw;
+            animation-delay: 1.8s;
+        }
+        
+        .bg-anim span:nth-child(3) {
+            background: #660000;
+            width: 270px;
+            height: 180px;
+            top: 80%;
+            left: -70px;
+            animation-delay: 3s;
+        }
+        
+        @keyframes float {
+            0% {
+                transform: translateY(0);
+            }
+            100% {
+                transform: translateY(-60px) scale(1.07);
+            }
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        
+        .hero-content h1 {
+            font-size: clamp(2.6rem, 7vw, 5.9rem);
+            font-weight: 800;
+            line-height: 1.09;
+            margin-bottom: 25px;
+            background: linear-gradient(90deg, var(--white), var(--red));
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+            -webkit-text-fill-color: transparent;
+            letter-spacing: -2px;
+            text-shadow: 0 4px 24px #ff2e2e22;
+        }
+        
+        .hero-content p {
+            font-size: clamp(1.1rem, 2.5vw, 1.37rem);
+            max-width: 700px;
+            margin: 0 auto 35px;
+            color: #f6f1f1;
+            letter-spacing: 0.5px;
+        }
+        
+        .hero-content .hero-btn {
+            font-size: 1.08rem;
+            text-transform: uppercase;
+            padding: 16px 40px;
+            border-radius: 40px;
+            background: rgba(255, 46, 46, 0.93);
+            color: var(--white);
+            border: none;
+            outline: none;
+            font-weight: 700;
+            box-shadow: 0 4px 24px rgba(255, 46, 46, 0.2);
+            cursor: pointer;
+            transition: var(--transition);
+            display: inline-block;
+            text-decoration: none;
+        }
+        
+        .hero-content .hero-btn:hover {
+            background: #1a0000;
+            color: var(--red);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 30px rgba(255, 46, 46, 0.3);
+        }
+        
+        /* Services Block - Enhanced */
+        .services-block {
+            position: relative;
+            z-index: 10;
+            max-width: 1350px;
+            margin: -6vh auto 0;
+            padding: 0 5%;
+            display: flex;
+            justify-content: center;
+            gap: 34px;
+            flex-wrap: wrap;
+        }
+        
+        .service-card {
+            background: var(--glass);
+            padding: 38px 32px 42px;
+            border-radius: 28px;
+            box-shadow: 0 8px 44px 0 rgba(26, 3, 3, 0.25);
+            border: 1.5px solid rgba(255, 46, 46, 0.1);
+            text-align: center;
+            min-width: 260px;
+            max-width: 349px;
+            flex: 1 1 300px;
+            transition: var(--transition);
+            backdrop-filter: blur(7.5px);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .service-card:before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,46,46,0.1) 0%, rgba(255,46,46,0) 70%);
+            transform: rotate(30deg);
+            transition: var(--transition);
+            opacity: 0;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-7px);
+            box-shadow: 0 12px 60px rgba(255, 46, 46, 0.3);
+        }
+        
+        .service-card:hover:before {
+            opacity: 1;
+            transform: rotate(0);
+        }
+        
+        .service-card-icon {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            color: var(--red);
+            filter: drop-shadow(0 0 30px rgba(255, 46, 46, 0.35));
+            transition: var(--transition);
+        }
+        
+        .service-card:hover .service-card-icon {
+            transform: scale(1.1);
+            filter: drop-shadow(0 0 40px rgba(255, 46, 46, 0.5));
+        }
+        
+        .service-card-title {
+            font-size: 1.45rem;
+            font-weight: 700;
+            color: var(--white);
+            margin-bottom: 11px;
+            transition: var(--transition);
+        }
+        
+        .service-card:hover .service-card-title {
+            color: var(--red-light);
+        }
+        
+        .service-card-desc {
+            font-size: 1.08rem;
+            color: var(--gray);
+            margin-bottom: 14px;
+        }
+        
+        .service-card a {
+            text-decoration: none;
+            color: var(--red);
+            font-weight: 600;
+            font-size: 1rem;
+            transition: color 0.21s;
+            display: inline-flex;
+            align-items: center;
+        }
+        
+        .service-card a:after {
+            content: '→';
+            margin-left: 8px;
+            transition: transform 0.3s;
+        }
+        
+        .service-card a:hover {
+            color: var(--white);
+        }
+        
+        .service-card a:hover:after {
+            transform: translateX(5px);
+        }
+        
+        /* Portfolio Pages Container */
+        .portfolio-pages {
+            display: flex;
+            justify-content: center;
+            margin: 60px 0;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+        
+        .portfolio-card {
+            width: 300px;
+            height: 380px;
+            border-radius: 20px;
+            overflow: hidden;
+            position: relative;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            transition: var(--transition);
+        }
+        
+        .portfolio-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(255, 46, 46, 0.3);
+        }
+        
+        .portfolio-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+        
+        .portfolio-card:hover img {
+            transform: scale(1.05);
+        }
+        
+        .portfolio-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(10, 10, 10, 0.9);
+            padding: 25px;
+            transform: translateY(0);
+            transition: transform 0.3s ease;
+        }
+        
+        .portfolio-card-title {
+            font-size: 1.5rem;
+            color: var(--white);
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+        
+        .portfolio-card-desc {
+            color: var(--gray);
+            font-size: 0.95rem;
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+        
+        .portfolio-link {
+            display: inline-block;
+            padding: 8px 20px;
+            background: var(--red);
+            color: white;
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: 600;
+            transition: var(--transition);
+        }
+        
+        .portfolio-link:hover {
+            background: var(--white);
+            color: var(--red);
+            transform: translateY(-3px);
+        }
+        
+        /* Footer - Enhanced Design */
+        .footer {
+            padding: 80px 5% 30px;
+            background: rgba(10, 10, 10, 0.98);
+            text-align: center;
+            letter-spacing: 1px;
+            border-top: 1.5px solid rgba(255, 255, 255, 0.05);
+            position: relative;
+        }
+        
+        .footer:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--black), var(--red), var(--black));
+        }
+        
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            text-align: left;
+            margin-bottom: 40px;
+        }
+        
+        .footer-column {
+            position: relative;
+            padding-bottom: 20px;
+        }
+        
+        .footer-column:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 2px;
+            background: var(--red);
+        }
+        
+        .footer-column h3 {
+            color: var(--red);
+            font-size: 1.4rem;
+            margin-bottom: 20px;
+            position: relative;
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 12px;
+            position: relative;
+            padding-left: 20px;
+        }
+        
+        .footer-links li:before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: var(--red);
+            font-size: 0.8rem;
+            top: 3px;
+        }
+        
+        .footer-links a {
+            color: var(--gray);
+            text-decoration: none;
+            transition: color 0.3s;
+            display: block;
+        }
+        
+        .footer-links a:hover {
+            color: var(--red);
+            padding-left: 5px;
+        }
+        
+        .contact-info {
+            list-style: none;
+        }
+        
+        .contact-info li {
+            display: flex;
+            margin-bottom: 15px;
+            color: var(--gray);
+            align-items: flex-start;
+        }
+        
+        .contact-info i {
+            color: var(--red);
+            margin-right: 12px;
+            margin-top: 4px;
+            min-width: 20px;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .social-link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 50%;
+            color: var(--white);
+            transition: var(--transition);
+            font-size: 1.1rem;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .social-link:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--red);
+            transform: scale(0);
+            border-radius: 50%;
+            transition: transform 0.3s;
+            z-index: -1;
+        }
+        
+        .social-link:hover {
+            color: var(--white);
+        }
+        
+        .social-link:hover:before {
+            transform: scale(1);
+        }
+        
+        .copyright {
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            color: var(--gray);
+            font-size: 0.95rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        .copyright strong {
+            color: var(--red);
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .nav-links {
+                position: fixed;
+                top: 0;
+                right: -300px;
+                width: 300px;
+                height: 100vh;
+                background: var(--black);
+                flex-direction: column;
+                align-items: flex-start;
+                padding: 100px 40px 40px;
+                transition: right 0.4s ease;
+                box-shadow: -5px 0 15px rgba(0, 0, 0, 0.2);
+                z-index: 100;
+            }
+            
+            .nav-links.active {
+                right: 0;
+            }
+            
+            .nav-links a {
+                margin: 0 0 25px 0;
+                font-size: 1.2rem;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .services-block {
+                margin-top: 0;
+                padding: 60px 5% 0;
+            }
+            
+            .hero-content h1 {
+                font-size: 3.1rem;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .hero-content h1 {
+                font-size: 2.6rem;
+            }
+            
+            .section-title {
+                font-size: 2.2rem;
+            }
+            
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .portfolio-card {
+                width: 100%;
+                max-width: 400px;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .navbar {
+                padding: 15px 5%;
+            }
+            
+            .hero-content h1 {
+                font-size: 2.1rem;
+            }
+            
+            .service-card {
+                min-width: 0;
+            }
+            
+            .services-block {
+                gap: 18px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="logo">MATRIX<span>LAB</span></div>
+        <div class="nav-links" id="navLinks">
+            <a href="index.html">Home</a>
+            <a href="index.html#services">Services</a>
+            <a href="index.html#portfolio">Portfolio</a>
+            <a href="index.html#contact">Contact</a>
+        </div>
+        <button class="mobile-menu-btn" id="menuToggle">
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </button>
+    </nav>
+
+    <!-- Portfolio Hero -->
+    <section class="portfolio-hero" id="graphic-design">
+        <div class="portfolio-hero-content" data-aos="fade-up">
+            <h1>Graphic Design Portfolio</h1>
+            <p>Discover our collection of visual identities, branding solutions, and marketing materials crafted for businesses across Kenya. Each design tells a unique story and solves specific market challenges.</p>
+        </div>
+    </section>
+
+    <!-- Portfolio Grid -->
+    <div class="portfolio-grid">
+        <div class="portfolio-item" data-aos="fade-up">
+            <img src="https://images.unsplash.com/photo-1611162617474-5b21e879e113?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1074&q=80" alt="Brand Identity">
+            <div class="portfolio-info">
+                <span class="portfolio-category">Brand Identity</span>
+                <h3>Nairobi Coffee Collective</h3>
+                <p>Complete brand identity for a premium coffee brand showcasing Kenyan coffee heritage</p>
+            </div>
+        </div>
+        
+        <div class="portfolio-item" data-aos="fade-up" data-aos-delay="100">
+            <img src="https://images.unsplash.com/photo-1600857062241-98e1d616747d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Marketing Materials">
+            <div class="portfolio-info">
+                <span class="portfolio-category">Marketing Materials</span>
+                <h3>Safari Adventures Campaign</h3>
+                <p>Tourism campaign materials for a luxury safari company targeting international travelers</p>
+            </div>
+        </div>
+        
+        <div class="portfolio-item" data-aos="fade-up" data-aos-delay="200">
+            <img src="https://images.unsplash.com/photo-1584824486539-53bb4646bdbc?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1074&q=80" alt="Packaging Design">
+            <div class="portfolio-info">
+                <span class="portfolio-category">Packaging Design</span>
+                <h3>Maasai Honey Products</h3>
+                <p>Eco-friendly packaging design for an artisanal honey producer supporting local communities</p>
+            </div>
+        </div>
+        
+        <div class="portfolio-item" data-aos="fade-up">
+            <img src="https://images.unsplash.com/photo-1544787219-7f47ccb76574?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Corporate Identity">
+            <div class="portfolio-info">
+                <span class="portfolio-category">Corporate Identity</span>
+                <h3>AfriTech Solutions</h3>
+                <p>Modern corporate identity for a Nairobi-based fintech startup</p>
+            </div>
+        </div>
+        
+        <div class="portfolio-item" data-aos="fade-up" data-aos-delay="100">
+            <img src="https://images.unsplash.com/photo-1602576666092-bf6447a729fc?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1074&q=80" alt="Event Branding">
+            <div class="portfolio-info">
+                <span class="portfolio-category">Event Branding</span>
+                <h3>Nairobi Design Week</h3>
+                <p>Complete branding solution for East Africa's premier design conference</p>
+            </div>
+        </div>
+        
+        <div class="portfolio-item" data-aos="fade-up" data-aos-delay="200">
+            <img src="https://images.unsplash.com/photo-1580982148078-342a1c06d6b1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1074&q=80" alt="Illustration">
+            <div class="portfolio-info">
+                <span class="portfolio-category">Illustration</span>
+                <h3>African Folklore Series</h3>
+                <p>Digital illustration series celebrating traditional African stories and legends</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+     <footer class="footer" id="contact">
+        <div class="footer-content">
+            <div class="footer-column">
+                <h3>Matrix Lab KE</h3>
+                <p>Your premier partner for digital innovation in Kenya. We create solutions that bridge technology gaps while empowering local businesses.</p>
+                <div class="social-links">
+                    <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-linkedin"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-dribbble"></i></a>
+                </div>
+            </div>
+            
+            <div class="footer-column">
+                <h3>Quick Links</h3>
+                <ul class="footer-links">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#portfolio">Portfolio</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-column">
+                <h3>Services</h3>
+                <ul class="footer-links">
+                    <li><a href="graphic-design.html">Graphic Design</a></li>
+                    <li><a href="web-development.html">Web Development</a></li>
+                    <li><a href="creative-solutions.html">Creative Solutions</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-column">
+                <h3>Contact Us</h3>
+                <ul class="contact-info">
+                    <li>
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>Nairobi, Kenya</span>
+                    </li>
+                    <li>
+                        <i class="fas fa-phone"></i>
+                        <span>+254 705 976 736</span>
+                    </li>
+                    <li>
+                        <i class="fas fa-envelope"></i>
+                        <span>matrixlabke@gmail.com</span>
+                    </li>
+                    <li>
+                        <i class="fas fa-clock"></i>
+                        <span>Mon-Sat: 8:00 AM - 6:00 PM</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="copyright">
+            &copy; 2025 <strong>Matrix Lab KE</strong> | Solving Kenya's digital challenges through creative technology
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+                // Initialize animations
+        AOS.init({
+            duration: 1000,
+            once: true
+        });
+
+        // Mobile menu toggle
+        const menuToggle = document.getElementById('menuToggle');
+        const navLinks = document.getElementById('navLinks');
+        const hamburger = document.querySelector('.hamburger');
+        
+        menuToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            menuToggle.classList.toggle('active');
+        });
+
+        // Close menu when clicking a link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+                menuToggle.classList.remove('active');
+            });
+        });
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    window.scrollTo({
+                        top: target.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
